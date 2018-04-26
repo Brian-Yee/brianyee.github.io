@@ -1,13 +1,13 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = "Brian Yee"
+  spec.name          = "Brian-Yee"
   spec.version       = "0.1.0"
   spec.authors       = ["Brian Yee"]
   spec.email         = ["brian.ph.yee@gmail.com"]
 
   spec.summary       = %q{Toronto based ML Consultant and Data Scientist}
-  spec.homepage      = "www.brianyee.ai"
+  spec.homepage      = "http://brianyee.ai"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select do |f|
