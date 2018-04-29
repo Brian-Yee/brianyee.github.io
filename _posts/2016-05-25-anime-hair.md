@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anime Hair Extraction via Clustering & Haar Features"
+title: "Anime Hair Extraction via Clustering Techniques"
 featured-img: anime-hair
 ---
 
@@ -15,7 +15,7 @@ While not every anime watcher has a waifu, the anime community still remains ext
 In particular [MyAnimeList.net](https://myanimelist.net/) which has some extremely detailed profiles including but not limited to: height, weight, birthdays, occupations, school, classes, favourite foods, likes, dislikes, and a picture for each.
 However, I didn’t see a lot of documentation on hair colour/style, most likely because it is so immediately apparent from the picture.
 
-Thus, I set out to create a semi-supervised algorithm to extract the regions of hair in a given anime portrait using clustering techniques.
+Thus, I set out to create a algorithm to extract the regions of hair in a given anime portrait using clustering techniques.
 
 The clustering techniques used were DBSCAN and k-means (plus convex hulls if you count those I guess?) and pre-trained facial detection algorithms.
 This article is meant predominantly as a Python tutorial to see what one can do when fooling around with scikit-learn, NumPy and OpenCV.
@@ -29,7 +29,7 @@ In plain English the logic of this program is the following
 3. Look where there is probably hair
 4. Look for other pixels with colours like your supposed hair region
 
-### <insert image>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/00-outline.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/00-outline.png)
 
 The first step reduces the original image of many colours, shades and hues to 12 base colours which approximate the original image.
 This will be obtained by a clustering process known as k-means.
@@ -91,6 +91,7 @@ f = [x for x in files if 'Aoi-Akira' in x][0]
 
 # Colour Reduction via K-Means Clustering
 
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/01-kmeans-colour-reduction.png" alt="Color Reduction via k-means" style="width: 256px;"/>
 As mentioned earlier image reduction is performed using k-means. 
 This is a fairly standard procedure and even an example in the scikit docs. 
 For a brief primer on k-means I refer the reader to this succinct youtube video which explains it with an example. 
@@ -99,8 +100,6 @@ The image is then passed to a function which reshapes the data from the numpy ar
 These RGB values are shuffled and passed to the scikit k-means wrapper, which tries it’s best to reduce an image into the requested `k=12` colours. 
 The output passes the reduced RGB data reshaped back into the original image dimensions. 
 A side by side comparison is shown to the right to visualize the approximation.
-
-### <wrap text around this image>
 
 ```python
 def reduceImage(x, NUM_COL):
@@ -160,10 +159,11 @@ Split apart the process seems pretty remarkable.
 It is clear that some of these regions are distinctly part of the hair giving our approach hope.
 The next step is to collect the regions using an educated guess of where the hair is most likely to be.
 
-### <Face boundar extraction>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/02-reduced-colour-palette.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/02-reduced-colour-palette.png)
+
 # Face Boundary Extraction via OpenCV & Convex Hull
 
-### <Extraction of skin region from colours obtained from k-means clustering.>
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/03-skin-tone.png" alt="Color Reduction via k-means" style="width: 256px;"/>
 
 The facial properties obtained in the preprocessing portion of this project (as mentioned before the code will be provided at the end) return 4 values defining a bounding rectangle on the face given by:
 
@@ -198,6 +198,7 @@ plt.imshow(cv2.cvtColor(np.hstack([img['orig'], img['skin']]), cv2.COLOR_BGR2RGB
 plt.axis('off'), plt.show()
 ```
 
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/04-skin-to-face.png" alt="Color Reduction via k-means" style="width: 256px;"/>
 While we were able to successfully extract the skin — it is riddled with sparse flecks and outlines.
 This noise results from the edges colours acting as dislocated shades/accents rather than a representation of the colour region itself.
 To remove these we use a technique called DBSCAN:
@@ -244,6 +245,7 @@ def scanForFace(F, X, eps=5, min_samps=1/3, SKIN_DEMONSTRATION=False):
         return np.vstack(facial_regions)
 ```
 
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/05-skinface-to-face.png" alt="Using convex hull to extract facial region" style="width: 256px;"/>
 Any clusters which remain after DBSCAN are then checked for intersection with the position of the facial region.
 In this way we pick up the face and neck or hands positioned over faces as part of the approximate region of face.
 
@@ -300,6 +302,7 @@ plt.imshow(cv2.cvtColor(np.hstack([img['orig'], img['skin'], A, img['hull'], B])
 plt.axis('off'), plt.show()
 ```
 
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/06-scaling.png" alt="Identifying face's convex hull" style="width: 256px;"/>
 With a defined region of hair we now need to find the scalp-line where the hair is most likely to be positioned.
 The following script performs this task by creating images `1.1` and `1.3` larger than the original size.
 Note the position of an image being scaled lies along a diagonal of the vector defining the original position, as shown right.
@@ -357,6 +360,8 @@ The next image shows the all clustered colours which contribute to more than 5% 
 The penultimate image restores the clustered colours to their original RGB values.
 The final image, serves as a reminder of what we were extracting from.
 
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/07-forehead.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/07-forehead.png)
+
 ```python
 hairLine = (img['hairPerimeter']*img['reduced']).reshape(-1, 3)
 
@@ -398,8 +403,7 @@ In row order, they correspond to
 4. The final colour distribution of the k-means cluster describing the predicted hair region
 
 The points at the origin `(0, 0, 0)` in each are simply the non-existant values and can be ignored from the plots.
-
-### <insert plot>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/08-hsv-view.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/08-hsv-view.png)
 
 We see then that the k-means clusters help to create a more organic boundary per se to separate via a non-linear decision boundary.
 This is extremely useful if not necessary, given that the shades often change as the hair falls downward.
@@ -414,7 +418,11 @@ In order of appearance they represent the:
 2. Comme ci comme ça
 3. Just plain ugly
 
-### <insert plots>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/09-good.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/09-good.png)
+
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/10-bad.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/10-bad.png)
+
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/11-ugly.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/anime-hair-clustering/11-ugly.png)
 
 # Conclusion
 I hope this project can serve as an example of the potential of OpenCV, NumPy and scikit-learn to those interested.

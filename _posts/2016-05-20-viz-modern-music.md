@@ -7,8 +7,14 @@ featured-img: visual-history-music-matplotlib
 # Music & Dance
 
 ### <Pulp Fiction Chubby Checkers Dance Scene>
-"I do believe Marsellus Wallace, my husband – your boss –  told you to take me out and do whatever I want.
-Now I wanna dance, I wanna win, I want that trophy, so dance good."
+**"I do believe Marsellus Wallace, my husband – your boss –  told you to take me out and do whatever I want.
+Now I wanna dance, I wanna win, I want that trophy, so dance good."**
+
+<center>
+<img src="https://i.giphy.com/media/fKBh0mt02CypW/giphy.webp" alt="Pulp Fiction Dance Scene" style="width: 1024px;"/>
+</center>
+
+<p>&nbsp;</p>
 
 Pulp Fiction is my favourite movie of all time.
 Amazing story, cast, performance and director makes it my go to movie for the "have you seen?" ice breaker.
@@ -19,14 +25,13 @@ Will we be cringing at Bring it On and Stomp the Yard as time goes on?
 Probably not as quickly as with disco, if we take a look at the music these scenes are dancing too.
 
 # The Viz
-### <insert the viz>
+
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/visualizing-music-history/00-history_of_music.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/visualizing-music-history/00-history_of_music.png)
 
 By analysing a list of Billboard’s top year end 100 songs we can quantify modern movements of music of  by the share of music genres represented for each years most popular songs according to Billboard.
 We can see Disco’s short dozen year glory and the more sustained emergence of rap/hip-hop since the 90’s.
 Interestingly the movement of disco corresponds to some of the lowest amount of genre shares from pop music, with history repeating again later in the mid 2000’s, when Rap/HipHop was at it’s peak.
 Soft and Hard Rock faired even worse than disco with them completely dying out by 2005 as opposed to disco’s somewhat small influence that continues to limp on with Madonna’s revival in 2005 and Bruno Mars and Maroon 5 getting songs stuck in our heads post-2010.
-
-### <bruno mars gif>
 
 # How was this Plot Made?
 
@@ -133,6 +138,9 @@ for year in xrange(1956, 2016):
 
 With all the links stored in a dataframe we can load each of the wikipedia pages to extract information from the info table at the top right corner of each page.
 Unfortunately this can get especially brutal when all these info tables are variable lengths, have different HTML nesting and incomplete data (how have people not categorized The Gorrilaz’s music?!).
+
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/visualizing-music-history/01-wikipedia-summaries.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/visualizing-music-history/01-wikipedia-summaries.png)
+
 To deal with this we find the table object in our code and save it as a string to be loaded later for analysis.
 The advantage of this is two fold – it allows us to gather all necessary information from one run and also gives us the power of simply looking for key-words in music genres to help sort through the zoo of user-defined definitions.
 
@@ -141,94 +149,6 @@ To deal with this we find the table object in our code and save it as a string t
 The advantage of this is two fold – it allows us to gather all necessary information from one run and also gives us the power of simply looking for key-words in music genres to help sort through the zoo of user-defined definitions.
 
 
-# load up the data frame from above and create empty columns to populate while      
-# scraping                                                                          
-
-dfs = cPickle.load(open('wikipediaScrape.p', 'rb'))
-subjects = ['Genre', 'Length', 'Producer', 'Label', 'Format', 'Released', 'B-side']
-for subject in subjects:
-    dfs[subject] = float('NaN')
-
-# similar to the tryInstance function above try to extract as much info as possible 
-# replacing missed instances caught by exceptions as NaNs.
-Further more the problem 
-# is aggrevated by the fact that tables are poorly managed, things may exist or not 
-# things may have typos, different names, different children nesting it's a         
-# nightmare.
-Further issues can occur when trying to save the soup format because   
-# one can exceed the maximum number of permitted iterations                         
-#                                                                                   
-# http://stackoverflow.com/questions/32926299/how-to-fix-statsmodel-warning-maximum-
-# no-of-iterations-has-exceeded                                                     
-#                                                                                   
-# so we save the string of HTML to process later                                    
-def extractInfoTable(url):
-    infoTable = []
-    # try exceptions for headers, table rows and pages
-    try:
-        soup = BeautifulSoup(requests.get(url).content)
-        for tr in soup.find('table').findAll('tr'):
-            try:
-                header = tr.find('th').text
-                if (header == 'Music sample'):
-                    # music sample indicates the end of info table if 
-                    # found simply break out of the loop to save time
-                    break
-                try:
-                    # else collect all info possible in the form of a
-                    # soup 'tr' object for analysis later
-                    trs = tr.findAll('td')
-                    infoTable.append([header, trs])
-                except:
-                    noTrsFound = True
-            except:
-                noHeaderFound = True
-    except:
-        noPageFound = True
-        
-    # if an entry exists for a given subject:
-    # SAVE THE STRING OF HTML
-    # for processing later, not the object
-    infoColumns = []
-    for subject in subjects:
-        instanceBool = False
-        # try to find a related header of a subject, if found
-        # break, else append a NaN
-        for header, info in infoTable:
-            if (subject in header):
-                infoColumns.append([subject, str(info)])
-                instanceBool = True
-                break
-        if (not instanceBool):
-            infoColumns.append([subject, float('NaN')])
-
-    # return all scraped information
-    return infoColumns
-
-# for all songs in the dataframe apply the above scraping function
-for songIndex in xrange(0,dfs.shape[0]):
-    # print status update
-    print songIndex, dfs.ix[songIndex].year, dfs.ix[songIndex].song
-    try:
-        # try accessing a link 
-        song_links = ['https://en.wikipedia.org' + x for x in dfs.ix[songIndex].song_links]
-        # extract info
-        infoTable = extractInfoTable(song_links[0])
-        # for index and subject store infromation 
-        for idx, subject in enumerate(subjects):
-            dfs.loc[:,(subject)].ix[songIndex] = str(infoTable[idx][1])
-        # if 100 songs are processed dump the data as a back up, restart later by manually
-        # changing the xrange() parameters 
-        if (songIndex % 100 == 0):
-            cPickle.dump(dfs.reset_index().drop('index', axis=1), open('full_df.p', 'wb'))
-    except(TypeError):
-        print 'NaN link found'
-
-# dump the final data frame
-cPickle.dump(dfs.reset_index().drop('index', axis=1), open('full_df.p', 'wb'))
-```
-
-```python
 # load up the data frame from above and create empty columns to populate while      
 # scraping                                                                          
 
@@ -440,7 +360,7 @@ plt.show()
 
 With a final output of
 
-### <matplotlib plot>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/visualizing-music-history/02-mpl-eda.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/visualizing-music-history/02-mpl-eda.png)
 
 The raw data is exported to LaTeX to create a slightly more polished look.
 

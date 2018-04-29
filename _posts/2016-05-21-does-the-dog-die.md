@@ -10,7 +10,8 @@ featured-img: does-the-dog-die
 The site was created as a way for sensitive viewers to learn the outcome of pets before choosing to watch a movie.
 I was curious to see how the genre of the movie affects the outcome of a dog die.
 
-### <image>
+![](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/does-the-dog-die/00-does-the-dog-die.png "Probability of dogs dying in movie genres.")
+
 
 # Dogs & Movies
 
@@ -105,6 +106,8 @@ I did, unfortunately I didn’t really see any patterns so I stop wondering shor
 Below is one of the outputs I looked at plotting IMDB Rating versus year for movies on www.doesthedogdie.com.
 This was one of my intermediate graphs for this project to see if the rating/year/outcome topic might be interesting to pursue.
  The y-axis is the IMDB rating, x-axis is the year the movie was released, blue means the dog lives (‘h’ for ‘happy icon’), green means the dog gets injured (‘s’ for ‘sad icon’), and red means the dog dies (‘c’ for ‘crying icon’).
+
+![](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/does-the-dog-die/01-eda-plot.png "Plot of movie ratings vs year with dog color hue")
 
 # What Did You Think?
 Think less dogs should die in movies?

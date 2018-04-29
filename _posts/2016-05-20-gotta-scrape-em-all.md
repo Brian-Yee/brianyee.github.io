@@ -9,15 +9,17 @@ featured-img: pokemon-by-pokedex-colour
 Below is a plot of all current 720 Pokemon plotted in a bar chart based on Pokedex colour entry value.
 Click the picture to see the full 5MB version in a new tab, or click here for a Google Drive link to the 100MB PDF if you require a massive resolution to work with (such as for desktop wallpapers or posters).
 
-### <pokemon image>
+![](https://github.com/Brian-Yee/brian-yee.github.io/blob/master/assets/img/pics/pokemon-scrape/00-pokemon.png?raw=true)
 
+# Pokemania
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/pokemon-scrape/01-pokemon-battle.jpg" alt="Pokemon battle" style="width: 256px;"/>
 Nothing, absolutely nothing, brings about more waves of childhood nostalgia to me than Pokemon.
 With trading card games, TV shows/movies, video games and soon augmented reality mobile apps, it comes as no surprise that the Pokemon franchise is the second most successful video game franchise after Mario.
 Certainly pokemon was an immersive culture back when I was a child, with journalists coining Pokemania as a way to describe a part of the young millennial zeitgeist.
 Perhaps then, it is not too surprising that after so many hours of conditioning as a child, my first web scraping project turned out to be related to Pokemon.
 Seventeen years later and still brainwashed to catch ’em all, I guess.
 
-### <Pokemon>
+
 
 # The Code
 The code for this program was written a year ago as a project for teaching myself web scraping.
@@ -99,12 +101,10 @@ Some pages also express wishes that you not scrape their data so if you would li
 
 Still have some latent, nostalgic, Pokemania?
 Check out these other awesome visualizations/organizations of Pokemon.
-The website pokepalettes.com break down the colour palettes of each Pokemon and pokedex.org is a comprehensive Pokedex!
-I should also mention the free and largely fan based Pokemon Zeta/Omicron.
+The website [pokepalettes.com](www.pokepalettes.com) break down the colour palettes of each Pokemon and pokedex.org is a comprehensive Pokedex!
+I should also mention the free and largely fan based [Pokemon Zeta/Omicron](https://zo.p-insurgence.com).
 Much of the community exists in the subreddit dedicated to it and for a long while fan feedback went into making an adult Pokemon game.
 It kept much of the original Pokemon charm while incorporating grown up themes such as: harder mini-puzzles, elaborate trading, swearing, and even characters dying via human sacrifice to power up other Pokemon.
-
-### <pokepalette> <pokedex>
 
 # What Did You Think?
 

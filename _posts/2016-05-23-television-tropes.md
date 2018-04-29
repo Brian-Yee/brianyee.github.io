@@ -4,20 +4,18 @@ title: "Show Recommendation by Television Tropes"
 featured-img: television-tropes
 ---
 
-What You’re Getting Into
-This article demonstrates an implementation/example of the Jaccard index to calculate shows.
-In this post you can expect:
+# Overview
 
-To have a 15 minute read
-An explanation of the Jaccard index
-An implementation/example in SciPy, with a more intutive example output.
-# The Golden age of Television
-### post the golden age of television post
-
+# The Golden Age of Television
+<center>
+<a href="https://www.youtube.com/watch?v=SUX9ja5ZY6M" target="_blank"><img src="http://img.youtube.com/vi/SUX9ja5ZY6M/0.jpg" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+<p>&nbsp;</p>
+</center>
 
 # There are two things I love in this world — everybody and television
-### <bingeimage >
-A fitting quote from Kenneth Parcel of 30 Rock, to succinctly describe the youtube compilation video “The Golden Age of Video”‘, as he sing talks it at the halfway point.
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/00-crisis.png" alt="Television Crisis" style="width: 256px;"/>
+
+A fitting quote from Kenneth Parcel of 30 Rock, to succinctly describe the youtube compilation video “The Golden Age of Video”, as he sing talks it at the halfway point.
 Like Mr.
 Parcel, the creator must have a great love for videos to make a song out of a string of infamous and semi-obscure quotes.
 As did one of his viewers who was inspired to remaster the whole video in HD.
@@ -34,8 +32,11 @@ Today in the television world, supply and demand are both rapidly increasing and
 # Tropes: Tricks of the Trade
 A trope is a writing device used to convey a message or idea to an audience in a manner which they can relate.
 Consider the “Enhance Button” whereby any image can be magically resolved to an unparalleled resolution simply by pressing a magical button.
+<center>
+<a href="https://www.youtube.com/watch?v=LhF_56SxrGk" target="_blank"><img src="http://img.youtube.com/vi/LhF_56SxrGk/0.jpg" alt="Enhance Trope" width="240" height="180" border="10" /></a>
+<p>&nbsp;</p>
+</center>
 
-### <tv enhace button>
 
 While super resolution imaging is an active field of computer science, I highly doubt we will be able to do “corneal imaging” anytime soon with available methods.
 What we can do though, is create groupings of shows which use a similar set of tropes to let the viewer pick a new show to watch.
@@ -146,6 +147,41 @@ Below are the results of the Jaccard Index suggester.
 The large poster is the queried show, and the rest are chosen by sorting the highest Jaccard Index values in descending order.
 Shows on the top row, read left to right, are the top 6 and beneath them are the remaining positions up to `12`.
 
-### <insert onslaugh of images>'''
 
-It doesn’t look half bad!
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/01-30-rock.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/01-30-rock.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/02-agent-carter.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/02-agent-carter.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/03-blue-mountain-state.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/03-blue-mountain-state.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/04-breaking-bad.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/04-breaking-bad.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/05-chuck.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/05-chuck.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/06-community.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/06-community.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/07-desperate-housewives.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/07-desperate-housewives.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/08-friends.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/08-friends.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/09-gilmore-girls.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/09-gilmore-girls.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/10-hannibal.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/10-hannibal.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/11-himym.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/11-himym.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/12-modern-family.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/12-modern-family.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/13-parks-and-rec.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/13-parks-and-rec.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/14-penny-dreadful.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/14-penny-dreadful.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/15-suits.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/15-suits.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/16-supernatural.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/16-supernatural.png	)
+<p>&nbsp;</p>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/17-x-files.png	](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/television-tropes/17-x-files.png	)
+<p>&nbsp;</p>
+
+It doesn’t look half bad! I find it quite interesting that even TV shows I don't know can be understood to be of a similar genre simply by observing the poster itself (Specifically those for Agent Carter & Blue Mountain State).
+
