@@ -50,7 +50,7 @@ kNN extends easily in higher dimensional spaces, while the addition of colours m
 For other subreddits colour can be used with a relatively high success rate.
 For example one can run this program on the /r/earthporn and /r/urbanhell subreddits and achieve a ~78% success rate using colour alone
 
-### <insert alison brie and hugh jackman>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/00-alison-brie-hugh-jackman.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/00-alison-brie-hugh-jackman.png)
 
 # Data Analysis
 A thousand images were prepared from each subreddit and put into a Pandas dataframe for various manipulations.
@@ -86,22 +86,23 @@ For readers who are unsure exactly what the knn algorithm is here is a great you
 The RGB and HSV were plotted to see if there were any clear colour preferences.
 As mentioned in the preparation section, little correlation between the sexes was found for colour.
 
-### <insert Plots of RGB & HSV values to see if any local clustering is apparent for the knn to benefit from>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/01-rgb-hsv.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/01-rgb.hsv.png)
 
 Clearly no clustering of significance is readily apparent here, implying that the majority of the classification is a consequence of the images’ dimensions.
 To see this we plot the image dimensions in a 3D plot, setting the z direction as the mean value of targets For example, if the resolution `(1000×1100)` has `8` women and `4` men it would be plotted at `(1000,1100,0.66)` in space.
 A colour map was used to help visualize the differences between the clusters.
 
-### <3d Plots of stuff>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/02-scatter-plot-viz.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/02-scatter-plot-viz.png)
 
 Wow!
 Okay, now we’re getting somewhere there clearly to be some trends in the size of images submitted to each subreddit.
 Lets quantify these differences a bit better by plotting the respective KDEs for resolutions predominantly held by men or women where predominantly” is defined as a mean less than `0.2` for men and greater than `0.8` for women.
 
-### <kde>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/03-kde.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/03-kde.png)
 
 # Mining the Subreddit Rules and Viewer Preferences
 
+<img align="right" src="https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/04-discovered-rule.png" alt="Color Reduction via k-means" style="width: 150px;"/>
 And the differences beome readily clear.
 /r/ladyboners clusters at a much lower resolution than /r/gentlemanboners.
 In fact it seems peculiar and suspicious just how large all entries for /r/gentlemanboners are, a good scientist here takes a step back and asks if they have made a mistake.
@@ -109,9 +110,6 @@ An investigation of the subreddit shows we are – in fact – correct, and have
 Looking at the sidebar of /r/gentlemanboners we see a set of rules which govern the subreddit, one of which is a minimum picture size.
 No such set of rules exist for /r/ladyboners!
 Three other direct features jump out:
-
-### An example of an underlying rule found by using knn
-
 - A large portion of men submit very high resolution images
 - People seem to like capping pictures at a 3000 pixel height resolution
 - While many pictures scale for women vertically the same way as for men a stronger trend seems to exist for pictures submitted to/r/ladyboners to also scale horizontally 
@@ -121,7 +119,7 @@ The second point is a bit more mysterious, I am not sure why 3000 is such a popu
 The third point is the most interesting one in my opinion.
 There seems to be a weak trend for women to submit/upvote  pictures with a wider aspect ratio on /r/ladyboners than their male counterparts on /r/gentlemanboners, however pinning down the reason (or proving the difference is even statistically relevant) is beyond the scope of this post.
 
-### Insert image comparing men vs women
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/05-aspect-ratio.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/05-aspect-ratio.png)
 
 # The Nitty Gritties (knn and PIL in python)
 
@@ -179,9 +177,11 @@ def prepareImage(im):
 
 Lets take it out for a spin
 
-### alison brie
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/06-output-1.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/06-output-1.png)
 
-and for the ladies in the house
+and Hugh Jackman as another example
+
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/07-output-2.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/07-output-2.png)
 
 # Splitting the Data
 
@@ -489,12 +489,12 @@ ax.set_zlabel(r'Mean Target Value', size=12)
 plt.show()
 ```
 
-### <insert 3d plot>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/02-scatter-plot-viz.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/02-scatter-plot-viz.png)
 
 # Summarizing our Findings
 Okay so there are clearly preferences but still not clear why the knn works so well, let’s plot the KDEs to help clear it up a bit more.
 
-### <insert kde>
+![https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/03-kde.png](https://raw.githubusercontent.com/Brian-Yee/brian-yee.github.io/master/assets/img/pics/knn-image-class/03-kde.png)
 
 Finally the trend shows itself.
 It is clear that the knn works as well as it does because the large majority of women’s images have smaller resolutions then men’s.

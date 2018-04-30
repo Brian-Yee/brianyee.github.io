@@ -428,4 +428,3 @@ In order of appearance they represent the:
 I hope this project can serve as an example of the potential of OpenCV, NumPy and scikit-learn to those interested.
 While far from perfect, in certain well seperable cases it seems to work well, while more complex palettes cause failure.
 The next post will look into ML techniques to deal with this breakdown while improving upon the model.
-
