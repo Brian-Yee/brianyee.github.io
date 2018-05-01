@@ -4,6 +4,10 @@ title: "Visualizing a Modern History of Music"
 featured-img: visual-history-music-matplotlib
 ---
 
+# Meta
+- See the converation on Reddit [here](https://www.reddit.com/r/dataisbeautiful/comments/438rlp/visualizing_modern_music_movements_by_scraping/)
+- Check out a curated list of Wikipedia Visualizations this was added to [here](http://seealso.org)
+
 # Music & Dance
 
 ### <Pulp Fiction Chubby Checkers Dance Scene>

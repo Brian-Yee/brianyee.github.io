@@ -4,6 +4,10 @@ title: "Does the Dog Die? Pet Safety by Movie Genre."
 featured-img: does-the-dog-die
 ---
 
+# Meta 
+- See the conversation on Reddit [here](https://www.reddit.com/r/dataisbeautiful/comments/3wnd3t/deathsinjurieshappily_ever_afters_of_pets_in/)
+- See the UpVoted (Reddit's Blog) article featuring this viz [here](https://redditblog.com/2015/12/14/does-the-dog-or-cat-die-in-this-movie-probably-if-its-a-horror-film/)
+
 # The Viz
 
 [www.doesthedogdie.com](www.doesthedogdie.com) is a website which hosts the outcome of pets in movies.

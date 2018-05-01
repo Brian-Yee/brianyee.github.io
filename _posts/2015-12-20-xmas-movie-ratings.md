@@ -4,6 +4,9 @@ title: "Nostalgiac Baby Boomers, Kinder Females & Love Actually"
 featured-img: xmas-ratings
 ---
 
+# Meta
+- See the converation on Reddit [here](https://www.reddit.com/r/dataisbeautiful/comments/3xktk2/christmas_movie_analysis_nostalgic_baby_boomers/)
+
 # Christmas
 It’s not quite Christmas time in my life till my girlfriend and I participate in our annual tradition of couch forts, Glühwein and Christmas movie marathons.
 Second only to snow, Christmas TV specials and movies define a tradition of knowing when it’s the season by watching feel good movies, but what is it that makes Christmas movies so nice?

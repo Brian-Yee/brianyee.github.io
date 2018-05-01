@@ -3,6 +3,8 @@ layout: post
 title: "Gotta Scrape 'em all"
 featured-img: pokemon-by-pokedex-colour
 ---
+# Meta
+- See the converation on Reddit [here](https://www.reddit.com/r/dataisbeautiful/comments/3vnrjx/pokemon_plotted_by_pokedex_colour_entry_oc/)
 
 # The Viz
 
